@@ -1,0 +1,30 @@
+api: # 接口调用配置 示范
+  # 区域/环境/服务名
+  # 全局
+  gdp-appserver-go:
+    domain: http://xxxxxx.aa.com
+    urls:
+      TemplateGetCdBiz: /v1/project/{{.projectName}}/paas/{{.paasName}}
+  odp-external:
+    domain: http://www.baidu.com
+    urls:
+      GetPodListByCdId: /v1/project/{{.project_name}}/paas/{{.paas_name}}
+mysql: # mysql 地域/环境/变量名
+  MysqlConnect:
+    address: 127.0.0.1:10000
+    username: kkk
+    pwEncoded: 62457c673b9ff5f732cf87081f1c800a12fae7dcaf5c9fdfa68ae27f0dab7749
+    database: db_server
+redis: # redis 配置
+  RedisConnect:
+    address: 127.0.0.1:30000
+    pwEncoded: f3e638bed907bf583a9820c192a2dbcf39b76d89683c767e9f70deb91d68c26b
+    database: 1
+custom: # 自定义配置
+  sensitive: # 加密敏感配置
+    defaultSensitiveAppKey: b5f411796069c770542d8d8b112912689b972a226d6593de6d49e188159d571cbf92d844266b409acf080ef2113af11c
+  normal: # 非加密普通配置
+    DefaultRTXLoginToken: "{{.defaultRTXLoginToken}}"
+    HostAndPort:
+      host: 0.0.0.0
+      port: 8084
