@@ -61,6 +61,8 @@ github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
 github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
 github.com/lqiz/expr v1.1.4 h1:RqWXmm6e3KCptmTI4DIi8diy1wrJtSa5NKXBt3wnRhk=
 github.com/lqiz/expr v1.1.4/go.mod h1:K4gPC7oPAwRL1ijO1AfWRMNgibjxYJ7Qqod6svgAeVU=
+github.com/magic-lib/go-plat-utils v1.0.0 h1:KoboXtTamxA94SCSvLPXdldYdel0n+qrSpveqS+5NRc=
+github.com/magic-lib/go-plat-utils v1.0.0/go.mod h1:SJdDB3IqTDkQK+/pN32O9f/DS8O2bHPmVZBMZ5A+iDk=
 github.com/marspere/goencrypt v1.0.7 h1:Rlvsc9b7Yeaeda+gsGeCjREVZ/KL7szelRq4+haK5mw=
 github.com/marspere/goencrypt v1.0.7/go.mod h1:S5g6Wsd5jcOO01sp9QxNMYCldx9kecoDkK7BWaHA0vo=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
@@ -104,8 +106,6 @@ github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.2/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/magic-lib/go-plat-utils v1.0.20250328002 h1:nqevczqIiXxDzhlWJq7CfQqNFY2fkxkrX8rgv4rmR5c=
-github.com/magic-lib/go-plat-utils v1.0.20250328002/go.mod h1:Fea9IS+EoeloTSU6kv2KLdAnixEAiHgTXkKUD/rtcTI=
 github.com/tidwall/gjson v1.14.2/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.18.0 h1:FIDeeyB800efLX89e5a8Y0BNH+LOngJyGrIWxG2FKQY=
 github.com/tidwall/gjson v1.18.0/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
