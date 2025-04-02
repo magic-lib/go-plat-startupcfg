@@ -2,6 +2,8 @@ package startupcfg
 
 // Database 连接参数的抽象，包含使用sql.Open连接数据库时的参数
 type Database interface {
+	// ProtocolName 连接协议
+	ProtocolName() string
 	// DriverName 使用sql.Open连接数据库时的driverName参数
 	DriverName() string
 	// DatasourceName 使用sql.Open连接数据库时的datasourceName参数

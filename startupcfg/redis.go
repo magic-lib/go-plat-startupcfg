@@ -10,11 +10,17 @@ var _ Database = (*RedisConfig)(nil)
 
 // RedisConfig redis配置
 type RedisConfig struct {
+	Protocol        string    `json:"protocol" yaml:"protocol"`
 	PasswordEncoded Encrypted `json:"pwEncoded" yaml:"pwEncoded"`
 	Address         string    `json:"address" yaml:"address"`
 	Database        int64     `json:"database" yaml:"database"`
 	Username        string    `json:"username" yaml:"username"`
 	UseTLS          bool      `json:"useTLS" yaml:"useTLS"`
+}
+
+// ProtocolName 连接协议
+func (c *RedisConfig) ProtocolName() string {
+	return c.Protocol
 }
 
 // DriverName 驱动名称
@@ -24,7 +30,8 @@ func (c *RedisConfig) DriverName() string {
 
 // DatasourceName 连接数据库时的datasourceName参数
 func (c *RedisConfig) DatasourceName() string {
-	return fmt.Sprintf("redis://%s:%s@%s/%d",
+	return fmt.Sprintf("%s://%s:%s@%s/%d",
+		c.DriverName(),
 		c.Username,
 		url.QueryEscape(c.Password()),
 		c.Address,

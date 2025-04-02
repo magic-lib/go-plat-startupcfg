@@ -10,11 +10,17 @@ var _ Database = (*MysqlConfig)(nil)
 
 // MysqlConfig mysql配置
 type MysqlConfig struct {
+	Protocol        string    `json:"protocol" yaml:"protocol"`
 	UserName        string    `json:"username" yaml:"username"`
 	PasswordEncoded Encrypted `json:"pwEncoded" yaml:"pwEncoded"`
 	Address         string    `json:"address" yaml:"address"`
 	Database        string    `json:"database" yaml:"database"`
 	Charset         string    `json:"charset" yaml:"charset"`
+}
+
+// ProtocolName 连接协议
+func (c *MysqlConfig) ProtocolName() string {
+	return c.Protocol
 }
 
 // DriverName 使用sql.Open连接数据库时的driverName参数
@@ -27,12 +33,24 @@ func (c *MysqlConfig) DatasourceName() string {
 	if c.Charset == "" {
 		c.Charset = _MYSQL_CHARSET
 	}
-	return fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=%s&parseTime=true&loc=Local",
+	//parseTime 是会自动解析成go的time.Time，否则为字符串
+	//loc 时区设置：loc=Asia/Shanghai 则用东八区解析时间
+	parseTime := "true"
+	loc := "Local"
+
+	if c.Protocol == "" {
+		c.Protocol = "tcp"
+	}
+
+	return fmt.Sprintf("%s:%s@%s(%s)/%s?charset=%s&parseTime=%s&loc=%s",
 		c.UserName,
 		url.QueryEscape(c.Password()),
+		c.Protocol,
 		c.Address,
 		c.Database,
-		c.Charset)
+		c.Charset,
+		parseTime,
+		loc)
 }
 
 // ServerAddress mysql服务器地址
@@ -61,8 +79,7 @@ func (c *MysqlConfig) DatabaseName() interface{} {
 
 // Extend 扩展字段
 func (c *MysqlConfig) Extend(name ExtendField) (interface{}, bool) {
-	switch name {
-	case extendMysqlCharset:
+	if name == extendMysqlCharset {
 		return c.Charset, true
 	}
 	return nil, false
