@@ -41,8 +41,8 @@ func setDecryptHandler(decryptF func(e Encrypted) (string, error)) {
 	}
 }
 
-// SetDefaultHandler 给默认的加解密方法设置加密key
-func SetDefaultHandler(key string) error {
+// SetDefaultEncryptedHandler 给默认的加解密方法设置加密key
+func SetDefaultEncryptedHandler(key string) error {
 	if hasSetDecryptHandler {
 		return fmt.Errorf("decryptFunc has seted")
 	}

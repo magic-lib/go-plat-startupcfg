@@ -38,7 +38,7 @@ func TestGetAllApiUrlMap(t *testing.T) {
 
 	keyStr := "tianlin020250214"
 
-	startupcfg.SetDefaultHandler(keyStr)
+	startupcfg.SetDefaultEncryptedHandler(keyStr)
 	enString, _ := startupcfg.Encrypted("aaaaa").Encode()
 
 	fmt.Println(enString)
