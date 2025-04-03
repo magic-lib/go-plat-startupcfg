@@ -5,7 +5,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/magic-lib/go-plat-utils/conv"
 	"github.com/tidwall/gjson"
-	"gopkg.in/yaml.v3"
+	yaml "gopkg.in/yaml.v3"
 	"log"
 	"os"
 	"sync"
@@ -113,6 +113,12 @@ func DecryptSecretByYamlFile(fileName string, jsPath string, v any) (*ConfigAPI,
 		if err != nil {
 			return c, err
 		}
+		//c 有密码替换，需要进行重置
+		c, err = newByYamlByPath([]byte(newConfigStr), jsPath)
+		if err != nil {
+			return nil, err
+		}
+		c.fromFileName = fileName
 	}
 
 	var val any
