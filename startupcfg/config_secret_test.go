@@ -15,7 +15,7 @@ func TestEncodeSecretMap(t *testing.T) {
 }
 func TestFormatWithSecretMap(t *testing.T) {
 	_ = startupcfg.SetDefaultHandler("aa")
-	newMap, err := startupcfg.EncryptSecretFormat("aaaaa{{.aaa}}", map[string]startupcfg.Encrypted{
+	newMap, err := startupcfg.DecryptSecretFormat("aaaaa{{.aaa}}", map[string]startupcfg.Encrypted{
 		"aaa": "635d662e90ba51615e811efed2f8be98",
 	})
 	fmt.Println(newMap, err)

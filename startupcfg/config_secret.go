@@ -7,8 +7,8 @@ import (
 	"text/template"
 )
 
-// EncryptSecretFormat 组合解密和模板替换操作，还原密码配置
-func EncryptSecretFormat(cfgTemplate string, encryptedMap map[string]Encrypted) (string, error) {
+// DecryptSecretFormat 组合解密和模板替换操作，还原密码配置
+func DecryptSecretFormat(cfgTemplate string, encryptedMap map[string]Encrypted) (string, error) {
 	if encryptedMap == nil || len(encryptedMap) == 0 {
 		return cfgTemplate, nil
 	}
