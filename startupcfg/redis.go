@@ -20,6 +20,9 @@ type RedisConfig struct {
 
 // ProtocolName 连接协议
 func (c *RedisConfig) ProtocolName() string {
+	if c.Protocol == "" {
+		c.Protocol = "tcp"
+	}
 	return c.Protocol
 }
 
@@ -32,10 +35,10 @@ func (c *RedisConfig) DriverName() string {
 func (c *RedisConfig) DatasourceName() string {
 	return fmt.Sprintf("%s://%s:%s@%s/%d",
 		c.DriverName(),
-		c.Username,
+		c.User(),
 		url.QueryEscape(c.Password()),
-		c.Address,
-		c.Database)
+		c.ServerAddress(),
+		c.DatabaseName())
 }
 
 // ServerAddress redis服务器地址

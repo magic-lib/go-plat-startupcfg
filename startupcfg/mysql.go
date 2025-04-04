@@ -20,6 +20,9 @@ type MysqlConfig struct {
 
 // ProtocolName 连接协议
 func (c *MysqlConfig) ProtocolName() string {
+	if c.Protocol == "" {
+		c.Protocol = "tcp"
+	}
 	return c.Protocol
 }
 
@@ -38,16 +41,12 @@ func (c *MysqlConfig) DatasourceName() string {
 	parseTime := "true"
 	loc := "Local"
 
-	if c.Protocol == "" {
-		c.Protocol = "tcp"
-	}
-
 	return fmt.Sprintf("%s:%s@%s(%s)/%s?charset=%s&parseTime=%s&loc=%s",
-		c.UserName,
+		c.User(),
 		url.QueryEscape(c.Password()),
-		c.Protocol,
-		c.Address,
-		c.Database,
+		c.ProtocolName(),
+		c.ServerAddress(),
+		c.DatabaseName(),
 		c.Charset,
 		parseTime,
 		loc)
