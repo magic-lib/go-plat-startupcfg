@@ -34,7 +34,7 @@ func (c *MysqlConfig) DriverName() string {
 // DatasourceName 使用sql.Open连接数据库时的datasourceName参数
 func (c *MysqlConfig) DatasourceName() string {
 	if c.Charset == "" {
-		c.Charset = _MYSQL_CHARSET
+		c.Charset = defaultMysqlCharset
 	}
 	//parseTime 是会自动解析成go的time.Time，否则为字符串
 	//loc 时区设置：loc=Asia/Shanghai 则用东八区解析时间

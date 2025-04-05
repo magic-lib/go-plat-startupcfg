@@ -6,16 +6,17 @@ type (
 )
 
 const (
-	_MYSQL_CHARSET = "utf8"
-	_TDMQ_PROTOCOL = "pulsar"
+	defaultMysqlCharset = "utf8"
 )
 
 var (
 	DriverMysql DriverType = "mysql"
 	DriverRedis DriverType = "redis"
 
-	extendMysqlCharset ExtendField = "charset"
-	extendRedisUseTLS  ExtendField = "TLS"
+	extendMysqlCharset     ExtendField = "charset"
+	extendRedisTLS         ExtendField = "tls"
+	extendRedisType        ExtendField = "type"
+	extendRedisPingTimeout ExtendField = "ping_timeout"
 
 	_, _ Database = new(MysqlConfig), new(RedisConfig)
 )

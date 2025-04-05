@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"time"
 )
 
 var _ Database = (*RedisConfig)(nil)
@@ -15,7 +16,10 @@ type RedisConfig struct {
 	Address         string    `json:"address" yaml:"address"`
 	Database        int64     `json:"database" yaml:"database"`
 	Username        string    `json:"username" yaml:"username"`
-	UseTLS          bool      `json:"useTLS" yaml:"useTLS"`
+	TLS             bool      `json:"tls" yaml:"tls"`
+	Type            string    `json:"type,default=node,options=node|cluster" yaml:"type"`
+	// PingTimeout is the timeout for ping redis.
+	PingTimeout time.Duration `json:"ping_timeout,default=1s"  yaml:"ping_timeout"`
 }
 
 // ProtocolName 连接协议
@@ -68,8 +72,12 @@ func (c *RedisConfig) User() string {
 // Extend 扩展字段
 func (c *RedisConfig) Extend(name ExtendField) (interface{}, bool) {
 	switch name {
-	case extendRedisUseTLS:
-		return c.UseTLS, true
+	case extendRedisTLS:
+		return c.TLS, true
+	case extendRedisType:
+		return c.Type, true
+	case extendRedisPingTimeout:
+		return c.PingTimeout, true
 	}
 	return nil, false
 }
