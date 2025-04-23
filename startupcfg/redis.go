@@ -3,7 +3,6 @@ package startupcfg
 import (
 	"fmt"
 	"log"
-	"net/url"
 	"time"
 )
 
@@ -40,7 +39,7 @@ func (c *RedisConfig) DatasourceName() string {
 	return fmt.Sprintf("%s://%s:%s@%s/%d",
 		c.DriverName(),
 		c.User(),
-		url.QueryEscape(c.Password()),
+		c.Password(),
 		c.ServerAddress(),
 		c.DatabaseName())
 }

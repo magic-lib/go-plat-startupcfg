@@ -3,7 +3,6 @@ package startupcfg
 import (
 	"fmt"
 	"log"
-	"net/url"
 )
 
 var _ Database = (*MysqlConfig)(nil)
@@ -43,7 +42,7 @@ func (c *MysqlConfig) DatasourceName() string {
 
 	return fmt.Sprintf("%s:%s@%s(%s)/%s?charset=%s&parseTime=%s&loc=%s",
 		c.User(),
-		url.QueryEscape(c.Password()),
+		c.Password(),
 		c.ProtocolName(),
 		c.ServerAddress(),
 		c.DatabaseName(),

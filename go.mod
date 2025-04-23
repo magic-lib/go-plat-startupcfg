@@ -4,7 +4,7 @@ go 1.24.1
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/magic-lib/go-plat-utils v1.20250331.2
+	github.com/magic-lib/go-plat-utils v1.20250422.1
 	github.com/nicksnyder/go-i18n/v2 v2.5.1
 	github.com/samber/lo v1.49.1
 	github.com/tidwall/gjson v1.18.0
@@ -21,6 +21,8 @@ require (
 	github.com/bytedance/go-tagexpr/v2 v2.9.11 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/forgoer/openssl v1.6.0 // indirect
+	github.com/hashicorp/errwrap v1.1.0 // indirect
+	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/iancoleman/orderedmap v0.3.0 // indirect
 	github.com/jimstudt/http-authentication v0.0.0-20140401203705-3eca13d6893a // indirect
 	github.com/jinzhu/copier v0.4.0 // indirect
