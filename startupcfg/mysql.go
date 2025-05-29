@@ -66,6 +66,7 @@ func (c *MysqlConfig) Password() string {
 	pass, err := c.PasswordEncoded.Get()
 	if err != nil {
 		log.Println("mysql password decode error:", err)
+		return string(c.PasswordEncoded)
 	}
 	return pass
 }
