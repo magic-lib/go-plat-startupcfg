@@ -3,6 +3,7 @@ package startupcfg
 import (
 	"fmt"
 	"github.com/magic-lib/go-plat-utils/crypto"
+	"log"
 )
 
 type (
@@ -78,7 +79,13 @@ func (e Encrypted) Get() (string, error) {
 		return "", nil
 	}
 	if decryptFunc != nil {
-		return decryptFunc(e)
+		originStr, err := decryptFunc(e)
+		if err == nil {
+			return originStr, nil
+		}
+		encodeStr, encodeErr := e.Encode()
+		log.Printf("ConfigDecryptSecret error, config set oldStr:%s, must set encodeStr:%s, encodeErr: %w", string(e), encodeStr, encodeErr)
+		return "", err
 	}
 	return string(e), fmt.Errorf("no set decryptFunc")
 }
