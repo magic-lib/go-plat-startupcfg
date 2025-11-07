@@ -84,7 +84,7 @@ func (e Encrypted) Get() (string, error) {
 			return originStr, nil
 		}
 		encodeStr, encodeErr := e.Encode()
-		log.Printf("ConfigDecryptSecret error, config set oldStr:%s, must set encodeStr:%s, encodeErr: %w", string(e), encodeStr, encodeErr)
+		log.Printf("startupcfg Encrypted set error, config set oldStr:%s, must set encodeStr:%s, encodeErr: %v", string(e), encodeStr, encodeErr)
 		return "", err
 	}
 	return string(e), fmt.Errorf("no set decryptFunc")
