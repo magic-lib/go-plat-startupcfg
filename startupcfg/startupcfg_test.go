@@ -50,7 +50,7 @@ func TestStartConfig(t *testing.T) {
 		}},
 		{"custom normal CloseHttpMemCache", []any{"CloseHttpMemCache"}, []any{false}, func(mysqlName string) bool {
 			str := conf.CustomNormal(mysqlName)
-			b, _ := conv.Bool(str)
+			b, _ := conv.Convert[bool](str)
 			return b
 		}},
 		{"mysql MysqlConnect pwd", []any{"MysqlConnect"}, []any{"root"}, func(mysqlName string) string {
