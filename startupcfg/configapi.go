@@ -8,6 +8,7 @@ import (
 	yaml "gopkg.in/yaml.v3"
 	"log"
 	"os"
+	"reflect"
 	"sync"
 	"time"
 )
@@ -126,8 +127,10 @@ func DecryptSecretByYamlFile(fileName string, jsPath string, v any) (*ConfigAPI,
 		return c, err
 	}
 
-	if err = conv.Unmarshal(val, v); err != nil {
-		return c, err
+	if v != nil && reflect.TypeOf(v).Kind() == reflect.Pointer {
+		if err = conv.Unmarshal(val, v); err != nil {
+			return c, err
+		}
 	}
 
 	return c, nil
