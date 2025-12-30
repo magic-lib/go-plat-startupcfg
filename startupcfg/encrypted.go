@@ -78,16 +78,19 @@ func (e Encrypted) Get() (string, error) {
 	if string(e) == "" {
 		return "", nil
 	}
-	if decryptFunc != nil {
-		originStr, err := decryptFunc(e)
-		if err == nil {
-			return originStr, nil
-		}
-		encodeStr, encodeErr := e.Encode()
-		log.Printf("startupcfg Encrypted set error, config set oldStr:%s, must set encodeStr:%s, encodeErr: %v", string(e), encodeStr, encodeErr)
-		return "", err
+	if decryptFunc == nil {
+		return string(e), nil
 	}
-	return string(e), fmt.Errorf("no set decryptFunc")
+
+	originStr, err := decryptFunc(e)
+	if err == nil {
+		return originStr, nil
+	}
+	encodeStr, encodeErr := e.Encode()
+	errStr := fmt.Sprintf("startupcfg Encrypted set error, config set oldStr:%s, error: %v, must set encodeStr:%s, encodeErr: %v", string(e), err, encodeStr, encodeErr)
+	log.Print(errStr)
+	return string(e), fmt.Errorf(errStr)
+
 }
 
 // Encode 加密
