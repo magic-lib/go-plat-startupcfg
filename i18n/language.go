@@ -7,7 +7,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/magic-lib/go-plat-utils/conv"
 	"golang.org/x/text/language"
-	yaml "gopkg.in/yaml.v3"
+	yaml "go.yaml.in/yaml/v3"
 	"os"
 )
 

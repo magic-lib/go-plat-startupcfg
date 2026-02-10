@@ -8,7 +8,7 @@ import (
 	"github.com/magic-lib/go-plat-utils/conv"
 	"github.com/magic-lib/go-plat-utils/crypto"
 	"github.com/magic-lib/go-plat-utils/utils"
-	"gopkg.in/yaml.v3"
+	"go.yaml.in/yaml/v3"
 	"testing"
 )
 
