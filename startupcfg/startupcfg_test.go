@@ -8,7 +8,7 @@ import (
 	"github.com/magic-lib/go-plat-utils/conv"
 	"github.com/magic-lib/go-plat-utils/crypto"
 	"github.com/magic-lib/go-plat-utils/utils"
-	"go.yaml.in/yaml/v3"
+	"gopkg.in/yaml.v3"
 	"testing"
 )
 
@@ -25,6 +25,10 @@ func TestStartConfig(t *testing.T) {
 
 	mysqlPwd, _ := crypto.CbcEncrypt("root", encKey, new(crypto.HexCoder))
 	tCRPullCommConn, _ := crypto.CbcEncrypt("datamore@2019", encKey, new(crypto.HexCoder))
+
+	_ = startupcfg.SetEncryptAndDecryptHandler(nil, func(m startupcfg.Encrypted) (string, error) {
+		return crypto.CbcDecrypt(string(m), encKey, new(crypto.HexCoder))
+	})
 
 	fmt.Println(mysqlPwd, tCRPullCommConn)
 

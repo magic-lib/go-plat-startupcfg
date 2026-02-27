@@ -89,7 +89,7 @@ func (e Encrypted) Get() (string, error) {
 	encodeStr, encodeErr := e.Encode()
 	errStr := fmt.Sprintf("startupcfg Encrypted set error, config set oldStr:%s, error: %v, must set encodeStr:%s, encodeErr: %v", string(e), err, encodeStr, encodeErr)
 	log.Print(errStr)
-	return string(e), fmt.Errorf(errStr)
+	return string(e), fmt.Errorf("%s", errStr)
 
 }
 

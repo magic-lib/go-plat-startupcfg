@@ -2,12 +2,12 @@ package i18n
 
 import (
 	"fmt"
+	"github.com/magic-lib/go-plat-utils/conv"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/nicksnyder/go-i18n/v2/i18n/template"
 	"github.com/samber/lo"
-	"github.com/magic-lib/go-plat-utils/conv"
 	"golang.org/x/text/language"
-	yaml "go.yaml.in/yaml/v3"
+	"gopkg.in/yaml.v3"
 	"os"
 )
 

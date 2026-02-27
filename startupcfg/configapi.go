@@ -5,7 +5,7 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/magic-lib/go-plat-utils/conv"
 	"github.com/tidwall/gjson"
-	yaml "go.yaml.in/yaml/v3"
+	"gopkg.in/yaml.v3"
 	"log"
 	"os"
 	"reflect"
