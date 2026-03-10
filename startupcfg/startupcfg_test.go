@@ -82,6 +82,20 @@ func TestDecrypt(t *testing.T) {
 
 	t.Log(mysqlCode)
 }
+func TestEncryptedData(t *testing.T) {
+	err := startupcfg.SetDefaultEncryptedHandler("")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	str := startupcfg.Encrypted("59a048a4c6f0835384836b29f75d5d4165e7d228b6b1f57145a1114eb8ed0b6d")
+	aa, err := str.Get()
+	fmt.Println(aa, err)
+
+	bbbb := startupcfg.Encrypted("rkbKlwl9OL0ew2cZ6m")
+	cc, err := bbbb.Encode()
+	fmt.Println(cc, err)
+}
 
 func TestEncryptedMarshal(t *testing.T) {
 	str := startupcfg.Encrypted("d278cee958a4a2521245a1e80224c3b31deedbce24e7eb3c33137a6ab4ca99e5")
