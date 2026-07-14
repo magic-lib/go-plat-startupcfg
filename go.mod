@@ -4,7 +4,7 @@ go 1.24.3
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260615113753-f7d11813f60c
+	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260711151631-d2593cc60077
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/samber/lo v1.52.0
 	github.com/tidwall/gjson v1.18.0

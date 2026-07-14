@@ -66,7 +66,7 @@ func SetDefaultEncryptedHandler(key string) error {
 func SetEncryptAndDecryptHandler(encryptF func(e string) (Encrypted, error),
 	decryptF func(m Encrypted) (string, error)) error {
 	if hasSetDecryptHandler {
-		return fmt.Errorf("decryptFunc has seted")
+		return fmt.Errorf("decryptFunc has set")
 	}
 	setEncryptHandler(encryptF)
 	setDecryptHandler(decryptF)
@@ -75,11 +75,12 @@ func SetEncryptAndDecryptHandler(encryptF func(e string) (Encrypted, error),
 
 // Get 获取解密串
 func (e Encrypted) Get() (string, error) {
-	if string(e) == "" {
+	encryptString := string(e)
+	if encryptString == "" {
 		return "", nil
 	}
 	if decryptFunc == nil {
-		return string(e), nil
+		return encryptString, nil
 	}
 
 	originStr, err := decryptFunc(e)
@@ -87,9 +88,10 @@ func (e Encrypted) Get() (string, error) {
 		return originStr, nil
 	}
 	encodeStr, encodeErr := e.Encode()
-	errStr := fmt.Sprintf("startupcfg Encrypted set error, config set oldStr:%s, error: %v, must set encodeStr:%s, encodeErr: %v", string(e), err, encodeStr, encodeErr)
-	log.Print(errStr)
-	return string(e), fmt.Errorf("%s", errStr)
+	errStr := fmt.Errorf("startupCfg Encrypted error, originStr:%s, encodeStr:%s, decryptFuncErr: %w, encodeErr: %w", encryptString, encodeStr, err, encodeErr)
+	log.Println(errStr.Error())
+	// 如果检测失败，则直接返回原始字符串
+	return encryptString, errStr
 
 }
 
@@ -98,15 +100,16 @@ func (e Encrypted) Encode() (Encrypted, error) {
 	if e == "" {
 		return "", nil
 	}
+	encryptString := string(e)
 	if decryptFunc != nil {
 		str, err := decryptFunc(e)
-		if err == nil && str != string(e) {
+		if err == nil && str != encryptString {
 			return e, nil
 		}
 	}
 
 	if encryptFunc != nil {
-		return encryptFunc(string(e))
+		return encryptFunc(encryptString)
 	}
 	return e, fmt.Errorf("no set encryptFunc")
 }
