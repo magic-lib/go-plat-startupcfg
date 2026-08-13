@@ -3,7 +3,9 @@ package startupcfg
 import (
 	"fmt"
 	"github.com/magic-lib/go-plat-utils/crypto"
+	gCache "github.com/patrickmn/go-cache"
 	"log"
+	"time"
 )
 
 type (
@@ -19,6 +21,7 @@ var (
 	decryptFunc          = func(e Encrypted) (string, error) {
 		return string(e), nil
 	} // 默认的密码直接返回
+	errorCache = gCache.New(40*time.Minute, 10*time.Minute) //避免错误重复打印出来
 )
 
 // setEncryptHandler 设置加密函数
@@ -88,8 +91,16 @@ func (e Encrypted) Get() (string, error) {
 		return originStr, nil
 	}
 	encodeStr, encodeErr := e.Encode()
-	errStr := fmt.Errorf("startupCfg Encrypted error, originStr:%s, encodeStr:%s, decryptFuncErr: %w, encodeErr: %w", encryptString, encodeStr, err, encodeErr)
-	log.Println(errStr.Error())
+	var encodeErrStr = ""
+	if encodeErr != nil {
+		encodeErrStr = encodeErr.Error()
+	}
+	errStr := fmt.Errorf("startupCfg Encrypted error, originStr:%s, encodeStr:%s, decryptFuncErr: %s, encodeErr: %s", encryptString, encodeStr, err.Error(), encodeErrStr)
+
+	if _, ok := errorCache.Get(encryptString); !ok {
+		log.Println(errStr.Error()) // 避免控制台重复打印错误信息
+		errorCache.Set(encryptString, encodeStr, 40*time.Minute)
+	}
 	// 如果检测失败，则直接返回原始字符串
 	return encryptString, errStr
 
