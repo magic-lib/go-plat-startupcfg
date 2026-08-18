@@ -4,8 +4,9 @@ go 1.24.3
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260813051351-26dbdd364bf3
+	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260818103136-e724e747dd96
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/samber/lo v1.52.0
 	github.com/tidwall/gjson v1.18.0
 	golang.org/x/net v0.50.0
@@ -60,7 +61,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d // indirect
 	github.com/panjf2000/ants/v2 v2.11.2 // indirect
-	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
