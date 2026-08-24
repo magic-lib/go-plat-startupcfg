@@ -42,7 +42,7 @@ func (c *ConfigAPI) CustomSensitive(key string) (string, error) {
 }
 
 // CustomNormal get value of insensitive custom config key
-func (c *ConfigAPI) CustomNormal(key string) interface{} {
+func (c *ConfigAPI) CustomNormal(key string) any {
 	if c.runConf == nil {
 		return nil
 	}

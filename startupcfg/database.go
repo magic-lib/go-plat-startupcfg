@@ -13,9 +13,9 @@ type Database interface {
 	// Password 数据库用户密码
 	Password() string
 	// DatabaseName 数据库名称
-	DatabaseName() interface{}
+	DatabaseName() any
 	// User 数据库用户
 	User() string
 	// Extend 扩展信息
-	Extend(ExtendField) (interface{}, bool)
+	Extend(ExtendField) (any, bool)
 }

@@ -22,7 +22,7 @@ type StartCfg struct {
 	Mysql           map[string]*MysqlConfig
 	Redis           map[string]*RedisConfig
 	Api             map[string]*ServiceApiConfig
-	Custom          map[string]interface{}
+	Custom          map[string]any
 	CustomSensitive map[string]Encrypted
 }
 
@@ -105,7 +105,7 @@ func (s *StartCfg) AllRedisMap() (map[string]*RedisConfig, error) {
 }
 
 // AllCustomMap 所有自定义配置
-func (s *StartCfg) AllCustomMap() (map[string]interface{}, error) {
+func (s *StartCfg) AllCustomMap() (map[string]any, error) {
 	customMapNew := s.Custom
 	if len(s.CustomSensitive) > 0 {
 		customStr := conv.String(customMapNew)
@@ -118,7 +118,7 @@ func (s *StartCfg) AllCustomMap() (map[string]interface{}, error) {
 			if err != nil {
 				return nil, err
 			}
-			customMapNew = make(map[string]interface{})
+			customMapNew = make(map[string]any)
 			err = conv.Unmarshal(postData, &customMapNew)
 			if err != nil {
 				return nil, err

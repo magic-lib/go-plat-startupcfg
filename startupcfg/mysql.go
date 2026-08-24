@@ -71,12 +71,12 @@ func (c *MysqlConfig) Password() string {
 }
 
 // DatabaseName mysql数据库名称
-func (c *MysqlConfig) DatabaseName() interface{} {
+func (c *MysqlConfig) DatabaseName() any {
 	return c.Database
 }
 
 // Extend 扩展字段
-func (c *MysqlConfig) Extend(name ExtendField) (interface{}, bool) {
+func (c *MysqlConfig) Extend(name ExtendField) (any, bool) {
 	if name == extendMysqlCharset {
 		return c.Charset, true
 	}

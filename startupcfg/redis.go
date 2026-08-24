@@ -59,7 +59,7 @@ func (c *RedisConfig) Password() string {
 }
 
 // DatabaseName redis数据库名称
-func (c *RedisConfig) DatabaseName() interface{} {
+func (c *RedisConfig) DatabaseName() any {
 	return c.Database
 }
 
@@ -69,7 +69,7 @@ func (c *RedisConfig) User() string {
 }
 
 // Extend 扩展字段
-func (c *RedisConfig) Extend(name ExtendField) (interface{}, bool) {
+func (c *RedisConfig) Extend(name ExtendField) (any, bool) {
 	switch name {
 	case extendRedisTLS:
 		return c.TLS, true

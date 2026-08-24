@@ -11,7 +11,7 @@ import (
 // @param path json path to convert
 // @param to target interface to convert
 // @return error
-func (c *ConfigAPI) ConvertTo(path string, to interface{}) error {
+func (c *ConfigAPI) ConvertTo(path string, to any) error {
 	if c.jsonBytes == nil {
 		return fmt.Errorf("startup config nil")
 	}
@@ -28,7 +28,7 @@ func (c *ConfigAPI) ConvertTo(path string, to interface{}) error {
 // @param relativePath relative(relate of 'custom') json path to convert
 // @param to target interface to convert
 // @return error
-//func (api *ConfigAPI) ConvertFromCustomTo(relativePath string, to interface{}) error {
+//func (api *ConfigAPI) ConvertFromCustomTo(relativePath string, to any) error {
 //	if api.configBytes == nil {
 //		return fmt.Errorf("startup config nil")
 //	}
@@ -45,7 +45,7 @@ func (c *ConfigAPI) ConvertTo(path string, to interface{}) error {
 // @param relativePath relative(relate of 'custom.normal') json path to convert
 // @param to target interface to convert
 // @return error
-func (api *ConfigAPI) ConvertFromCustomNormalTo(relativePath string, to interface{}) error {
+func (api *ConfigAPI) ConvertFromCustomNormalTo(relativePath string, to any) error {
 	if api.jsonBytes == nil {
 		return fmt.Errorf("startup config nil")
 	}

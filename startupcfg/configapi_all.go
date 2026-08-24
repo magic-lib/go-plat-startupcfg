@@ -51,7 +51,7 @@ func (c *ConfigAPI) CustomSensitiveAll() map[string]Encrypted {
 }
 
 // CustomNormalAll get all custom normal configs(kv)
-func (c *ConfigAPI) CustomNormalAll() map[string]interface{} {
+func (c *ConfigAPI) CustomNormalAll() map[string]any {
 	if c.runConf == nil {
 		return nil
 	}
