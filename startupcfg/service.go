@@ -10,8 +10,9 @@ type ServiceAPI interface {
 	Url(apiName string) string
 	// AuthData 接口其他数据（鉴权数据等）
 	AuthData(key string) (string, error)
-	// Param 获取服务所需的其它自定义参数
-	Param(key string) (any, bool)
+	// ConfigData 获取服务所需的其它自定义参数
+	ConfigData(key string) (any, bool)
+	ConfigAll() map[string]any
 }
 
 // ServiceApiConfig 服务接口
@@ -20,7 +21,7 @@ type ServiceApiConfig struct {
 	Auth   map[string]Encrypted `json:"auth" yaml:"auth"`
 	Urls   map[string]string    `json:"urls" yaml:"urls"`
 	// Params 服务所需的其它自定义参数
-	Params map[string]any `json:"params" yaml:"params"`
+	Configs map[string]any `json:"configs" yaml:"configs"`
 }
 
 // DomainName 接口域名
@@ -51,11 +52,24 @@ func (c *ServiceApiConfig) AuthData(key string) (string, error) {
 	return "", nil
 }
 
-// Param 获取服务所需的其它自定义参数
-func (c *ServiceApiConfig) Param(key string) (any, bool) {
-	if c == nil || c.Params == nil {
+// ConfigData 获取服务所需的其它自定义参数
+func (c *ServiceApiConfig) ConfigData(key string) (any, bool) {
+	if c == nil || c.Configs == nil {
 		return "", false
 	}
-	value, ok := c.Params[key]
+	value, ok := c.Configs[key]
 	return value, ok
+}
+
+// ConfigAll 获取服务所需的其它自定义参数
+// 返回副本，避免调用方修改 map 覆盖内部配置
+func (c *ServiceApiConfig) ConfigAll() map[string]any {
+	if c == nil || c.Configs == nil {
+		return map[string]any{}
+	}
+	result := make(map[string]any, len(c.Configs))
+	for k, v := range c.Configs {
+		result[k] = v
+	}
+	return result
 }

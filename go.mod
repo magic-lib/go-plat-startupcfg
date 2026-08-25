@@ -4,7 +4,7 @@ go 1.24.3
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260818103136-e724e747dd96
+	github.com/magic-lib/go-plat-utils v1.20260210.2-0.20260825040004-d52b9d5358a7
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/samber/lo v1.52.0
@@ -38,6 +38,7 @@ require (
 	github.com/go-playground/validator/v10 v10.30.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.2 // indirect
+	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/securecookie v1.1.2 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
