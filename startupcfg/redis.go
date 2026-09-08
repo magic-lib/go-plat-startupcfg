@@ -53,7 +53,7 @@ func (c *RedisConfig) ServerAddress() string {
 func (c *RedisConfig) Password() string {
 	pass, err := c.PasswordEncoded.Get()
 	if err != nil {
-		log.Println("redis password decode error:", err)
+		log.Println("redis password decode info:", err)
 	}
 	return pass
 }

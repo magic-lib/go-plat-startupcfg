@@ -95,7 +95,7 @@ func (e Encrypted) Get() (string, error) {
 	if encodeErr != nil {
 		encodeErrStr = encodeErr.Error()
 	}
-	errStr := fmt.Errorf("startupCfg Encrypted error, originStr:%s, encodeStr:%s, decryptFuncErr: %s, encodeErr: %s", encryptString, encodeStr, err.Error(), encodeErrStr)
+	errStr := fmt.Errorf("startupCfg Encrypted info, originStr:%s, encodeStr:%s, decryptFuncErr: %s, encodeErr: %s", encryptString, encodeStr, err.Error(), encodeErrStr)
 
 	if _, ok := errorCache.Get(encryptString); !ok {
 		log.Println(errStr.Error()) // 避免控制台重复打印错误信息

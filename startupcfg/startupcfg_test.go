@@ -88,7 +88,7 @@ func TestEncryptedData(t *testing.T) {
 		t.Error(err)
 		return
 	}
-	str := startupcfg.Encrypted("59a048a4c6f0835384836b29f75d5d4165e7d228b6b1f57145a1114eb8ed0b6d")
+	str := startupcfg.Encrypted("662fd9c94cc5fa1767f01af1339911a7ee86a38eebda1702d4c4b48a2b4e6a98d25191284745950787d55af1c7c6db06")
 	aa, err := str.Get()
 	fmt.Println(aa, err)
 
