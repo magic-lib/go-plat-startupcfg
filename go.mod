@@ -4,7 +4,7 @@ go 1.24.3
 
 require (
 	github.com/json-iterator/go v1.1.12
-	github.com/magic-lib/go-plat-utils v1.20260902.2-0.20260908084829-9ab69d762cd9
+	github.com/magic-lib/go-plat-utils v1.20260902.2-0.20261010124941-069dee9be352
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/samber/lo v1.52.0
@@ -26,7 +26,9 @@ require (
 	github.com/bytedance/go-tagexpr/v2 v2.9.11 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/docker/go v1.5.1-1 // indirect
+	github.com/dop251/goja v0.0.0-20231024180952-594410467bc6 // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/forgoer/openssl v1.6.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
@@ -36,9 +38,11 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.30.1 // indirect
+	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.2 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
+	github.com/google/pprof v0.0.0-20250208200701-d0013a598941 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/securecookie v1.1.2 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -79,6 +83,7 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/timandy/routine v1.1.5 // indirect
+	github.com/ucarion/jcs v0.1.2 // indirect
 	github.com/vcaesar/cedar v0.20.2 // indirect
 	github.com/viant/toolbox v0.37.0 // indirect
 	github.com/viant/xreflect v0.0.0-20230303201326-f50afb0feb0d // indirect
@@ -96,7 +101,6 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260209200024-4cfbd4190f57 // indirect
 	google.golang.org/grpc v1.79.1 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
-	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gorm.io/gorm v1.31.1 // indirect
 )
