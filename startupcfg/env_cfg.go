@@ -34,3 +34,9 @@ func SetMapToEnv(m map[string]string) error {
 	}
 	return nil
 }
+func EnvByKey(envKey string) string {
+	if envKey == "" {
+		return ""
+	}
+	return os.Getenv(envKey)
+}
